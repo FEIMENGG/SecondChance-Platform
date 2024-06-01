@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8"/>
+    <title>Product Details</title>
+    <link rel="icon" href="/img/page_icon.png"/>
+    <link href="/css/home_page/header_and_nav.css" rel="stylesheet"/>
+    <link href="/css/product/product_info.css" rel="stylesheet"/>
+    <script src="/js/jquery-1.12.4.js"></script>
+    <script src="/js/home/header_model_js.js"></script>
+    <script src="/js/publish/product_info.js"></script>
+</head>
+<body>
+<header th:include="header :: copy"></header>
+<div th:include="short_nav_show :: short_nav_show" class="short_nav_show"></div>
+<nav th:include="my_nav :: my_nav" class="my_nav"></nav>
+<div th:include="personal_nav :: personal_nav" class="personal_nav"></div>
+<div class="top_content">
+    <div class="publish_product_div">
+        <div class="product_img_div">
+            <img src="/img/home/p4.jpeg" class="product_img" th:src="${shopInformation.image}"/>
+        </div>
+        <div class="product_info_div">
+            <span class="what_info">Product:</span>
+            <input type="hidden" th:value="${shopInformation.id}" class="id"/>
+            <span class="info_content" th:text="${shopInformation.name}">Iphone6s</span><br/>
+            <span class="what_info">Product Quality:</span>
+            <span class="info_content" th:text="${shopInformation.level}+'%'">70%</span><br/>
+            <span class="what_info">Number:</span>
+            <span class="info_content" th:text="${shopInformation.quantity}">3</span><br/>
+            <span class="what_info">Price:</span>
+            <span class="info_content" th:text="'$'+${shopInformation.price}">20.00</span><br/>
+            <span class="what_info">Details:</span>
+            <span class="info_content" th:text="${shopInformation.remark}">This is a product. Contact me: 1111111111</span><br/>
+            <span class="what_info">Sort:</span>
+            <span class="info_content" th:text="${sort}">Computers-Phone-Apple</span><br/>
+            <button class="buy_button" th:value="${shopInformation.id}">Add to cart</button>
+        </div>
+        <div class="publish_comment">
+            <span>Leave Message:</span><br/><br/>
+            <input type="hidden" th:value="${token}" class="token"/>
+            <textarea class="comment_textarea" maxlength="122" placeholder="Fill in a maximum of 122 characters this time" name="comment"></textarea>
+            <button class="send_comment_button">Post</button>
+        </div>
+        <div class="comment_content">
+            <div class="one_comment" th:each="o:${shopContextBeans}">
+                <span class="username" th:text="'Username：'+${o.username}">User：1211110</span>
+                <span class="time" th:with="time = ${o.modified}"
+                      th:text="'Posted on '+${#dates.format(time,'yyyy-MM-dd HH:mm:ss')}">Posted on：2024-05-01 22:22:22</span>
+                <p class="content" th:text="${o.context}">123456789123</p>
+            </div>
+        </div>
+    </div>
+    <footer>
+        <p>Copyright © 2024. Second Chance. All rights reserved.<a href="/"></a></p>
+    </footer>
+</div>
+</body>
+</html>

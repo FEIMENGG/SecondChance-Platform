@@ -1,0 +1,123 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+  <meta charset="UTF-8"/>
+  <title>SecondChance</title>
+  <link rel="icon" href="/img/page_icon.png"/>
+  <link th:href="@{/css/home_page/home_page_circle.css}" rel="stylesheet"/>
+  <link th:href="@{/css/home_page/header_and_nav.css}" rel="stylesheet"/>
+  <link th:href="@{/css/home_page/bottom_ifon_and_feature.css}" rel="stylesheet"/>
+  <script th:src="@{/js/jquery-1.3.2.min.js}"></script>
+  <script th:src="@{/js/home/home_page_circle.js}"></script>
+  <script th:src="@{/js/home/header_model_js.js}"></script>
+</head>
+<body>
+<header th:include="header :: copy"></header>
+<div th:include="short_nav_show :: short_nav_show" class="short_nav_show"></div>
+<nav th:include="my_nav :: my_nav" class="my_nav"></nav>
+<div th:include="personal_nav :: personal_nav" class="personal_nav"></div>
+<div class="my_slider">
+  <div class="my_slide">
+    <h1>iPhone X</h1>
+    <p>
+      The iPhone X, Powered by the A11 Bionic chip, offers robust performance for multitasking and gaming,
+      while the latest iOS updates ensure security. It remains a compelling choice as a second-hand device.
+      Please click here for more details......
+    </p >
+    <div class="slide_img">
+      <img src="/img/home/iPhoneX.jpg" style="width: 400px;height: 270px"/>
+    </div>
+  </div>
+  <div class="my_slide">
+    <h1>Apple MacBook Air</h1>
+    <p>
+      Used MacBook Air offers better value for money than new models, while maintaining Apple's usual durability and reliability
+      for people who need to carry their devices frequently. It extends the lifecycle of your electronics, making it environmentally friendly and economical.
+    </p>
+    <div class="slide_img">
+      <img src="/img/home/57b12a31N8f4f75a3.jpg" style="width: 400px;height: 270px"/>
+    </div>
+  </div>
+  <div class="my_slide">
+    <h1>Media Cooker</h1>
+    <p>
+      Midea induction cooker, precise large fire, fast enjoy delicious, six cooking functions, four auxiliary functions,
+      4D waterproof technology, splash and splash-proof, oversized touch keys, simple and more durable.
+    </p>
+    <div class="slide_img">
+      <img src="/img/home/Midea+Induction+Cooker.jpg" style="width: 400px;height: 270px"/>
+    </div>
+  </div>
+  <div class="my_slide">
+    <h1>Cartier Watch</h1>
+    <p>
+      Second-hand Cartier watches are known for their excellent brand reputation, classic and elegant design and superb watchmaking
+      craftsmanship, and even pre-owned products still maintain high quality and accuracy.
+    </p>
+    <div class="slide_img">
+      <img src="/img/home/rBEQYFGbHbIIAAAAAAKw4BQkpv4AABqfgAhcuwAArD4706.jpg" style="width: 400px;height: 270px"/>
+    </div>
+  </div>
+  <div class="my_slide current">
+    <h1>Logitech Keyboard</h1>
+    <p>
+      The used Logitech G413 Mechanical Gaming Keyboard is known for its quality mechanical axes, durable aluminium faceplate and
+      backlit design, providing an excellent typing and gaming experience.
+    </p>
+    <div class="slide_img">
+      <img src="/img/home/58f834abNfcc1c117.jpg" style="width: 400px;height: 270px"/>
+    </div>
+  </div>
+  <div class="left_border">
+    <span class="left_turn"></span>
+  </div>
+  <div class="right_border">
+    <span class="right_turn"></span>
+  </div>
+</div>
+<div class="featured_products">
+  <h2>Hot Products</h2>
+  <figure class="product" th:each="o:${shopInformationBean}">
+    <div class="product_img_div">
+      <img src="/img/home/feature_prodects/cont1.jpg" class="show_img" th:src="${o.image}"/>
+    </div>
+    <p class="show_tip" th:text="${o.remark}"></p>
+    <input class="product_id" type="hidden" th:value="${o.id}"/>
+    <a class="product_name" th:href="'/selectById.do?id='+${o.id}" th:text="${o.name}" th:title="${o.name}">group3</a><br/>
+    <span class="product_cost" th:text="'$'+${o.price}+''">$350.00</span><br/><br/>
+    <span class="buy product_1" th:value="${o.id}">Add to my cart</span>
+  </figure>
+</div>
+<div class="home_page_info">
+  <div class="bottom_info">
+    <h2>
+      About us
+    </h2>
+    <p>
+      The website, founded in 2024, is a New Zealand second-hand trading platform developed by Massey University.
+      The website is currently in trial operation stage and welcomes people to sell and buy second-hand goods!
+    </p>
+  </div>
+  <div class="bottom_info">
+    <h2>
+      Team Information
+    </h2>
+    <p>This website was completed by the collaborative efforts of Group3.
+    </p>
+  </div>
+  <div class="bottom_info">
+    <h2>
+      Copyright Notice
+    </h2>
+    <p>
+      All information published on this website is considered that the publisher agrees to the use of this website.
+      If this website deems that the information published by the user is illegal and other behaviours,
+      it has the right to modify and delete.
+    </p>
+  </div>
+</div>
+<footer>
+  <p>Copyright ©2024. Second Chance. All rights reserved.<a href="/"></a></p>
+</footer>
+</body>
+</html>
